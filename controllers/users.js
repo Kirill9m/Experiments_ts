@@ -2,6 +2,12 @@ import { prisma } from '../prisma/prisma-client.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+/**
+ * 
+ * @route POST /api/users
+ * @description Login a user
+ * @access Private
+ */
 const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -29,6 +35,12 @@ const login = async (req, res) => {
   }
 }
 
+/**
+ * 
+ * @route POST /api/users/register
+ * @description Register a new user
+ * @access Private
+ */
 const register = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -70,9 +82,14 @@ const register = async (req, res) => {
   }
 }
 
-
+/**
+ * 
+ * @route GET /api/users/current
+ * @description Get current user
+ * @access Private
+ */
 const current = async (req, res) => {
-  res.send('respond with a resource');
+  return res.status(200).json(req.user);
 }
 
 export { login, register, current };
