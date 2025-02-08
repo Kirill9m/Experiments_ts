@@ -1,0 +1,4 @@
+//Server main build
+npm i -g express-generator
+express --no-view
+npm i dotenv, concurrently, nodemon
