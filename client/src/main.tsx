@@ -2,7 +2,24 @@ import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import { store } from "./app/store"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import "./index.css"
+import { Paths } from "./paths"
+
+const router = createBrowserRouter([
+  {
+    path: Paths.home,
+    element: <h1>Home</h1>,
+  },
+  {
+    path: Paths.login,
+    element: <h1>Login</h1>,
+  },
+  {
+    path: Paths.register,
+    element: <h1>Register</h1>,
+  },
+]);
 
 const container = document.querySelector("#root")
 
@@ -12,7 +29,7 @@ if (container) {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <h1>Hello world!</h1>
+        <RouterProvider router={ router }/>
       </Provider>
     </React.StrictMode>,
   )
