@@ -4,7 +4,8 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 
-import usersRouter from './routes/users.js';
+import usersRouter from './routes/users.router.js';
+import employeesRouter from './routes/employees.router.js';
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use(cookieParser());
 
 //Routes
 app.use('/api/users', usersRouter);
+app.use('/api/employees', employeesRouter);
 
 export default app;

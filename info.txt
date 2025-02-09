@@ -2,3 +2,7 @@
 npm i -g express-generator
 express --no-view
 npm i dotenv, concurrently, nodemon
+
+
+//Database update:
+npx prisma migrate dev
