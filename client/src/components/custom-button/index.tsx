@@ -4,11 +4,12 @@ import styles from './index.module.css';
 interface CustomButtonProps {
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'secondary' | 'danger';
+  variant?: 'primary' | 'secondary' | 'logIn' | 'danger';
   disabled?: boolean;
   loading?: boolean;
   onClick?: () => void;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export const CustomButton: React.FC<CustomButtonProps> = ({
@@ -19,6 +20,7 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
   loading = false,
   onClick,
   className,
+  icon
 }) => {
   return (
     <button
@@ -29,7 +31,12 @@ export const CustomButton: React.FC<CustomButtonProps> = ({
     >
       {loading ? (
         <span className={styles.loader}></span>
-      ) : children}
+      ) : (
+        <>
+          {icon && <span className={styles.icon}>{icon}</span>}
+          {children}
+        </>
+      )}
     </button>
   );
 };

@@ -1,5 +1,5 @@
 .header {
-    padding: 50px 0;
+    padding: 40px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -8,6 +8,6 @@
 }
 
 .teamIcon {
-    font-size: 26px;
-    margin-right: 12px;
-}
+    font-size: 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
