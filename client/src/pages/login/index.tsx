@@ -7,6 +7,7 @@ import { CustomButton } from '../../components/custom-button';
 import { Link } from 'react-router-dom';
 
 export const Login = () => {
+	const [form] = Form.useForm();
 	return (
 		<Layout>
 			<Row align="middle" justify="center">
@@ -14,11 +15,12 @@ export const Login = () => {
 					<Form onFinish={() => null}>
 						<CustomInput
 							type='email'
-							name='email'
-							placeholder='Email'
+							name='e-post'
+							placeholder='E-post'
 						/>
 						<CustomPasswordInput
-							name='password'
+							form={form}
+							name='lösenord'
 							placeholder='Lösenord'
 						/>
 						<CustomButton

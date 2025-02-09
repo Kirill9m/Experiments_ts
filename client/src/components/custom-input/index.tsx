@@ -14,7 +14,7 @@ export const CustomInput = ({
   return (
     <Form.Item
       name={name}
-      rules={[{ required: true, message: `Please input your ${name}!` }]}
+      rules={[{ required: true, message: `Vänligen ange din ${name}!` }]}
       shouldUpdate={true}
     >
       <Input

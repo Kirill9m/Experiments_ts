@@ -11,7 +11,7 @@ export const Header = () => {
       <Space>
         <TeamOutlined className={styles.teamIcon} />
         <Link to={Paths.home}>
-          <CustomButton variant="primary">Medarbetare</CustomButton>
+          <CustomButton variant="primary">Medarbetare 1.0</CustomButton>
         </Link>
       </Space>
       <Space>

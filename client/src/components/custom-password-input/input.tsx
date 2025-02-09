@@ -5,13 +5,18 @@ type Props = {
   name: string;
   placeholder: string;
   dependencies?: NamePath[];
+  form: any;
 }
 
 export const CustomPasswordInput = ({
   name,
   placeholder,
-  dependencies
+  dependencies,
+  form
 }: Props) => {
+  const password = Form.useWatch('lösenord', form);
+  const isPasswordValid = password && password.length >= 6;
+
   return (
     <Form.Item
       name={name}
@@ -19,32 +24,33 @@ export const CustomPasswordInput = ({
       hasFeedback
       rules={[{
         required: true,
-        message: `Please input your ${name}!`,
+        message: name === 'confirmLösenord' 
+          ? 'Vänligen bekräfta lösenordet'
+          : 'Vänligen ange lösenord',
       }, ({ getFieldValue }) => ({
         validator(_, value) {
           if (!value) {
             return Promise.resolve();
           }
 
-          if (name === 'confirmPassword') {
-            if (!value || getFieldValue('password') === value) {
+          if (name === 'confirmLösenord') {
+            if (!value || getFieldValue('lösenord') === value) {
               return Promise.resolve();
             }
-
-            return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            return Promise.reject(new Error('Lösenorden matchar inte'));
           } else {
             if (value.length < 6) {
-              return Promise.reject(new Error('Password must be at least 6 characters!'));
+              return Promise.reject(new Error('Lösenordet måste innehålla minst 6 tecken'));
             }
             return Promise.resolve();
           }
         }
-      })
-      ]}
+      })]}
     >
       <Input.Password
         placeholder={placeholder}
-        size={"large"}
+        size="large"
+        disabled={name === 'confirmLösenord' && !isPasswordValid}
       />
     </Form.Item>
   );
