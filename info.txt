@@ -6,3 +6,6 @@ npm i dotenv, concurrently, nodemon
 
 //Database update:
 npx prisma migrate dev
+
+//React + typescript
+npx create-react-app client --template redux-typescript
